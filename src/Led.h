@@ -4,6 +4,8 @@
 class Led {
 	public:
 		static int run(int pin, bool ledOn);
+	private:
+		Led() = delete;
 };
 
 #endif
