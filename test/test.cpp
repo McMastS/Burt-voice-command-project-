@@ -6,5 +6,5 @@ class test{
 int main(){
     cout << "VoiceToText Test" << endl;
     cout << VoiceToText::parseSpeech("./test/TurnOnLED1.wav") << endl;
-    cout << VoiceToText::parseSpeech("./test/TurnOffLED1.wav") << endl;
+    cout << VoiceToText::parseSpeech("./test/TurnOnLED.wav") << endl;
 } 
