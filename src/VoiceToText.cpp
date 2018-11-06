@@ -12,7 +12,7 @@ static size_t read_callback(void *ptr, size_t size, size_t nmemb, void *userp)
  
         if (size*nmemb < 1)
                 return 0;
- 
+
         if (pooh->sizeleft) {
                 *(char *)ptr = pooh->readptr[0]; /* copy one single byte */
                 pooh->readptr++;                 /* advance pointer */
@@ -22,9 +22,7 @@ static size_t read_callback(void *ptr, size_t size, size_t nmemb, void *userp)
  
         return 0;                          /* no more data left to deliver */
 }
-VoiceToText::VoiceToText(){
-    
-}
+
 CURLcode VoiceToText::parseSpeech(string audioFile){
     CURL *curl;
     CURLcode res;
@@ -60,13 +58,8 @@ CURLcode VoiceToText::parseSpeech(string audioFile){
         curl_easy_setopt(curl, CURLOPT_HTTPHEADER, list);
 
         res = curl_easy_perform(curl);
-        std::cout << res;
+        //std::cout << res; //remove this line once parser is done
         curl_easy_cleanup(curl);
     }
     return res;
-}
-int main(){
-    VoiceToText test = VoiceToText();
-    test.parseSpeech("TurnOnLED.wav");
-    test.parseSpeech("LED1.wav");
 }

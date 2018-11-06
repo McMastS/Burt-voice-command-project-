@@ -7,11 +7,8 @@
 
 class VoiceToText{
     public:
-        VoiceToText();
-        //~VoiceToText();
-        CURLcode parseSpeech(std::string audioFile);
+        static CURLcode parseSpeech(std::string audioFile);
     private:
-        //findCommandFromText(std::string text);
-
+        VoiceToText() = delete;
 };
 #endif
