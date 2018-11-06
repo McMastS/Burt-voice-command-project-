@@ -9,7 +9,7 @@ int LedOff::run(std::string led) {
 	
 	pinMode(0, OUTPUT);
 	
-	if (led.compare("LED 1") == 0)
+	if (led.compare("LED one") == 0)
 		digitalWrite(0, 0);
 	
 	return 0;
