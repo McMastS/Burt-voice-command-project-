@@ -1,8 +1,8 @@
-#include "JsonParser.h";
+#include "JsonParser.h"
 using json = nlohmann::json;
 
-std::vector JsonParser::parse(CURLcode res){
-	auto json = res_json;
+std::vector<std::string> JsonParser::parse(std::string ret){
+	auto json = R"(ret)"_json;
 	
 	std::string subject = json["entities"]["message_subject"]["value"];
 	// won't always be "on_off"
@@ -11,7 +11,7 @@ std::vector JsonParser::parse(CURLcode res){
 	std::cout << subject << std::endl;
 	std::cout << intent << std::endl;
 	
-	std::vector command;
+	std::vector<std::string> command;
 	command.push_back(subject);
 	command.push_back(intent);
 	

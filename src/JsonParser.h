@@ -1,13 +1,13 @@
 #ifndef JsonParser_H
 #define JsonParser_H
-#include <nlohmann/json.hpp>
 #include <string>
 #include <vector>
 #include "VoiceToText.h"
+#include "json.hpp"
 
 class JsonParser{
     public:
-        static std::vector parse(CURLcode res);
+        static std::vector<std::string> parse(std::string ret);
     private:
         JsonParser() = delete;
 };
