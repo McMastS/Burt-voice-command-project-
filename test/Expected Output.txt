@@ -12,3 +12,6 @@ Subject: LED one
 Intent: on
 Subect: LED one
 Intent: off
+
+Start Timer Test:
+prints out "Time up" after 3 seconds
