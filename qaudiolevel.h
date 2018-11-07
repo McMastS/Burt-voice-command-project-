@@ -38,16 +38,25 @@
 **
 ****************************************************************************/
 
-#include "audiorecorder.h"
+#ifndef QAUDIOLEVEL_H
+#define QAUDIOLEVEL_H
 
-#include <QtWidgets>
+#include <QWidget>
 
-int main(int argc, char *argv[])
+class QAudioLevel : public QWidget
 {
-    QApplication app(argc, argv);
+    Q_OBJECT
+public:
+    explicit QAudioLevel(QWidget *parent = 0);
 
-    AudioRecorder recorder;
-    recorder.show();
+    // Using [0; 1.0] range
+    void setLevel(qreal level);
 
-    return app.exec();
-}
+protected:
+    void paintEvent(QPaintEvent *event);
+
+private:
+    qreal m_level;
+};
+
+#endif // QAUDIOLEVEL_H
