@@ -3,14 +3,12 @@
 #include <wiringPi.h>
 #include "LedOff.h"
 
-int LedOff::run(std::string led) {
+int LedOff::run() {
 	if (wiringPiSetup() == -1)
 		return -1;
 	
 	pinMode(0, OUTPUT);
-	
-	if (led.compare("LED one") == 0)
-		digitalWrite(0, 0);
+	digitalWrite(0, 0);
 	
 	return 0;
 }

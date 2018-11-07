@@ -8,9 +8,9 @@ message_subject should be "LED"
 on_off should be "on"
 
 Json Parsing Test:
-Subject: LED one
+Subject: Lights
 Intent: on
-Subect: LED one
+Subect: Lights
 Intent: off
 
 Start Timer Test:

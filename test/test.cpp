@@ -6,8 +6,8 @@ class test{
 };
 int main(){
     cout << "VoiceToText Test:" << endl;
-    string test1 = VoiceToText::parseSpeech("./test/TurnOnLED1.wav");
-    string test2 = VoiceToText::parseSpeech("./test/TurnOffLED.wav");
+    string test1 = VoiceToText::parseSpeech("./test/TurnOnTheLights.wav");
+    string test2 = VoiceToText::parseSpeech("./test/TurnOffTheLights.wav");
     cout << test1 << endl;
     cout << test2 << endl;
     cout << "Json Parsing Test:" << endl;
