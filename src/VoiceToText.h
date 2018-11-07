@@ -7,7 +7,7 @@
 
 class VoiceToText{
     public:
-        static CURLcode parseSpeech(std::string audioFile);
+        static std::string parseSpeech(std::string audioFile);
     private:
         VoiceToText() = delete;
 };

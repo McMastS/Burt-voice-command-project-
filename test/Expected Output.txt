@@ -1,3 +1,4 @@
+//Note these results may vary as we are training Wit.ai with different commands and Wit.ai is not 100% accurate
 VoiceToText Test
 First file should have 2 entities:
 message_subject should be "LED one"
@@ -5,3 +6,9 @@ on_off should be "on"
 Second file should have 2 entities:
 message_subject should be "LED"
 on_off should be "on"
+
+Json Parsing Test:
+Subject: LED one
+Intent: on
+Subect: LED one
+Intent: off

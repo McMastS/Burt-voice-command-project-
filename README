@@ -1,2 +1,2 @@
-To compile and test run g++ ./test/test.cpp -lcurl
-Make sure to have libcurl-dev installed
+To compile and test run g++ ./test/test.cpp -lcurl -ljsoncpp
+Make sure to have libcurl-dev and libjsoncpp-dev installed

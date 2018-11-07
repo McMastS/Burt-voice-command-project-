@@ -22,10 +22,17 @@ static size_t read_callback(void *ptr, size_t size, size_t nmemb, void *userp)
  
         return 0;                          /* no more data left to deliver */
 }
+// writeback function from https://curl.haxx.se/libcurl/c/getinmemory.html
+static size_t WriteCallback(void *contents, size_t size, size_t nmemb, void *userp)
+{
+    ((std::string*)userp)->append((char*)contents, size * nmemb);
+    return size * nmemb;
+}
 
-CURLcode VoiceToText::parseSpeech(string audioFile){
+string VoiceToText::parseSpeech(string audioFile){
     CURL *curl;
     CURLcode res;
+    string readBuffer;
     curl_global_init(CURL_GLOBAL_DEFAULT);
     curl = curl_easy_init();
     FILE *file;
@@ -54,12 +61,12 @@ CURLcode VoiceToText::parseSpeech(string audioFile){
         curl_easy_setopt(curl, CURLOPT_POST, 1L);
         curl_easy_setopt(curl, CURLOPT_READFUNCTION, read_callback);
         curl_easy_setopt(curl, CURLOPT_READDATA, &pooh);
+        curl_easy_setopt(curl, CURLOPT_WRITEFUNCTION, WriteCallback);
+        curl_easy_setopt(curl, CURLOPT_WRITEDATA, &readBuffer);
         curl_easy_setopt(curl, CURLOPT_VERBOSE, NULL);
         curl_easy_setopt(curl, CURLOPT_HTTPHEADER, list);
-
         res = curl_easy_perform(curl);
-        //std::cout << res; //remove this line once parser is done
         curl_easy_cleanup(curl);
     }
-    return res;
+    return readBuffer;
 }

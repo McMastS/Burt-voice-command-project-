@@ -1,19 +1,15 @@
 #include "JsonParser.h"
-using json = nlohmann::json;
 
-std::vector<std::string> JsonParser::parse(std::string ret){
-	auto json = R"(ret)"_json;
-	
-	std::string subject = json["entities"]["message_subject"]["value"];
-	// won't always be "on_off"
-	std::string intent = json["entites"]["on_off"]["value"];
-	
-	std::cout << subject << std::endl;
-	std::cout << intent << std::endl;
-	
-	std::vector<std::string> command;
+using namespace std;
+vector<string> JsonParser::parseJSON(std::string result){
+	vector<string> command;
+	Json::Reader reader;
+	Json::Value obj;
+	reader.parse(result, obj);
+	string subject = obj["entities"]["message_subject"][0]["value"].asString();
+	string intent = obj["entities"]["on_off"][0]["value"].asString();
 	command.push_back(subject);
+	// won't always be "on_off"
 	command.push_back(intent);
-	
 	return command;
 }
