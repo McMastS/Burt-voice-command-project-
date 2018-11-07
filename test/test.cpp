@@ -11,7 +11,6 @@ int main(){
     cout << test1 << endl;
     cout << test2 << endl;
     cout << "Json Parsing Test:" << endl;
-    JsonParser::parseJSON(test1);
     vector<string> vec1 = JsonParser::parseJSON(test1);
     vector<string> vec2 = JsonParser::parseJSON(test2);
     cout << "Subject:" << vec1[0] << endl;
