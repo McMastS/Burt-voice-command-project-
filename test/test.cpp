@@ -24,6 +24,7 @@ int main(){
     cout << "Weather test: " << endl;
     string weatherTest2 = VoiceToText::parseSpeech("./test/Weather.wav");
     vector<string> weather = JsonParser::parseJSON(weatherTest2);
+    cout << Weather::currentForecast() << endl;
     CommandParser::runCommand(weather);
 
     // Timer tests : timer doesn't handle units yet
