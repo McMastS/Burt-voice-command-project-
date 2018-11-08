@@ -154,17 +154,18 @@ static QVariant boxValue(const QComboBox *box)
 void AudioRecorder::toggleRecord()
 {
     if (audioRecorder->state() == QMediaRecorder::StoppedState) {
-        audioRecorder->setAudioInput(boxValue(ui->audioDeviceBox).toString());
-
+        //audioRecorder->setAudioInput(boxValue(ui->audioDeviceBox).toString());
+        QString defaultIn = audioRecorder->defaultAudioInput();
+        audioRecorder->setAudioInput(defaultIn);
         QAudioEncoderSettings settings;
-        settings.setCodec("audio/amr");
+        settings.setCodec("audio/pcm");
         settings.setBitRate(16000);
         settings.setChannelCount(1);
         settings.setQuality(QMultimedia::HighQuality);
         settings.setEncodingMode(QMultimedia::ConstantQualityEncoding);
-        QString container = "audio/x-wav";
 
-        audioRecorder->setEncodingSettings(settings, QVideoEncoderSettings(), container);
+        audioRecorder->setEncodingSettings(settings, QVideoEncoderSettings(), "audio/x-wav");
+        audioRecorder->setContainerFormat("wav");
         audioRecorder->record();
     }
     else {
