@@ -1,14 +1,17 @@
 //Note these results may vary as we are training Wit.ai with different commands and Wit.ai is not 100% accurate
 VoiceToText Test
 First file should have 2 entities:
-message_subject should be "LED one"
+message_subject should be "lights"
 on_off should be "on"
 Second file should have 2 entities:
-message_subject should be "LED"
-on_off should be "on"
+message_subject should be "light"
+on_off should be "off"
 
 Json Parsing Test:
-Subject: LED one
-Intent: on
-Subect: LED one
-Intent: off
+Subject:lights
+Intent:on
+Subect:light
+Intent:off
+
+Start Timer Test:
+prints out "Time up" after 3 seconds
