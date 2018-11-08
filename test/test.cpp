@@ -26,6 +26,7 @@ int main(){
 
     // No audio
     cout << "Weather test: " << endl;
+<<<<<<< Updated upstream
     string weatherTest1 = Weather::currentForecast();
     cout << weatherTest1 << endl;
 
@@ -34,3 +35,8 @@ int main(){
     vector<string> weather = JsonParser::parseJSON(weatherTest2);
     CommandParser::runCommand(weather);
 } 
+=======
+    string weatherTest = Weather::currentForecast();
+    cout << weatherTest << endl;
+} 
+>>>>>>> Stashed changes
