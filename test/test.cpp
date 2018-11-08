@@ -1,6 +1,5 @@
 #include "../src/VoiceToText.cpp"
 #include "../src/JsonParser.cpp"
-#include "../src/Weather.cpp"
 #include "../src/CommandParser.cpp"
 
 using namespace std;
@@ -20,23 +19,9 @@ int main(){
     cout << "Intent:" << vec1[1] << endl;
     cout << "Subject:" << vec2[0] << endl;
     cout << "Intent:" << vec2[1] << endl;
-	
-	// CommandParser::runCommand(vec1);
-	// CommandParser::runCommand(vec2);
-
-    // No audio
-    cout << "Weather test: " << endl;
-<<<<<<< Updated upstream
-    string weatherTest1 = Weather::currentForecast();
-    cout << weatherTest1 << endl;
 
     //Audio
     string weatherTest2 = VoiceToText::parseSpeech("./test/Weather.wav");
     vector<string> weather = JsonParser::parseJSON(weatherTest2);
     CommandParser::runCommand(weather);
 } 
-=======
-    string weatherTest = Weather::currentForecast();
-    cout << weatherTest << endl;
-} 
->>>>>>> Stashed changes
