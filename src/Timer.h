@@ -11,8 +11,8 @@ class Timer{
 	
 	public:
 		static void runTime(double in);
-	
-	
+	private:
+		Timer() = delete;
 };
 
 #endif
