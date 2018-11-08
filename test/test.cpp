@@ -31,6 +31,8 @@ int main(){
 
     //Audio
     string weatherTest2 = VoiceToText::parseSpeech("./test/Weather.wav");
+    cout << weatherTest2 << endl;
     vector<string> weather = JsonParser::parseJSON(weatherTest2);
+    cout << weather[0] << endl;
     CommandParser::runCommand(weather);
 } 
