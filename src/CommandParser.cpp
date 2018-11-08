@@ -1,8 +1,9 @@
 #include <string>
 #include "CommandParser.h"
 #include "LedOn.cpp"
+#include "Timer.cpp"
 #include "LedOff.cpp"
-#include "Weather.h"
+#include "Weather.cpp"
 
 void CommandParser::runCommand(vector<std::string> command) {
 	if (command[0].compare("light") == 0 || command[0].compare("lights")) {
