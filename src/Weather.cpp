@@ -111,7 +111,5 @@ string Weather::currentForecast() {
     result << "The max temp is " << jsonVector[1] << "°C." << " The min temp is " << jsonVector[2] << "°C." << endl;
     result << "The sky is currently " << jsonVector[3] <<  "." << endl;
 
-    cout << result.str() << endl;
-    
     return result.str();
 }
