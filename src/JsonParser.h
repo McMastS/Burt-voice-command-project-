@@ -2,7 +2,7 @@
 #define JsonParser_H
 #include <string>
 #include <vector>
-#include <json/json.h>
+#include <jsoncpp/json/json.h>
 #include "VoiceToText.h"
 
 

@@ -6,7 +6,7 @@
 #include <vector>
 #include <stdio.h>
 #include <stdlib.h>
-#include <json/json.h>
+#include <jsoncpp/json/json.h>
 #include <curl/curl.h>
 #include "VoiceToText.h"
 
