@@ -11,6 +11,9 @@ void CommandParser::runCommand(vector<std::string> command) {
 		else
 			LedOff::run();
 	}
+	
+	if (command[0].compare("timer") == 0)
+		Timer::run(std::stod(command[2]));
 
 	if (command[0].compare("weather") == 0) {
 		Weather::currentForecast();

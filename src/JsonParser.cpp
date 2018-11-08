@@ -16,9 +16,7 @@ vector<string> JsonParser::parseJSON(string rawJson){
 	command.push_back(intent);
 	if (obj["entities"]["duration"] != "null"){
 		string duration = obj["entities"]["duration"][0]["normalized"]["value"].asString(); 
-		string unit = obj["entities"]["duration"][0]["normalized"]["unit"].asString(); 
 		command.push_back(duration);
-		command.push_back(unit);
 	}
 	
 	return command;
