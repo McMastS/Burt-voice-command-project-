@@ -21,10 +21,3 @@ vector<string> JsonParser::parseJSON(string result){
 	
 	return command;
 }
-<<<<<<< HEAD
-
-vector<string> JsonParser::parseWeatherData(string weatherJson) {
-
-}
-=======
->>>>>>> 80ea5d77bbccdf5a39aa17f42e7b01916e1bb431
