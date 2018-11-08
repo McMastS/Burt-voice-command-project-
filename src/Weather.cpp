@@ -90,10 +90,12 @@ vector<string> Weather::parseWeatherData(std::string weatherJson) {
     double min_temp = obj["main"]["temp_min"].asDouble() - 273.15;
     double max_temp = obj["main"]["temp_max"].asDouble() - 273.15;
     string skyCondition = obj["weather"][0]["main"].asString();
-
-    jsonVector.push_back(to_string(temp));
-    jsonVector.push_back(to_string(min_temp));
-    jsonVector.push_back(to_string(max_temp));
+    int minTemp = (int) min_temp;
+    int maxTemp = (int) max_temp;
+    int curTemp = (int) temp;
+    jsonVector.push_back(to_string(curTemp));
+    jsonVector.push_back(to_string(minTemp));
+    jsonVector.push_back(to_string(maxTemp));
     jsonVector.push_back(skyCondition);
 
     return jsonVector;
@@ -103,12 +105,10 @@ string Weather::currentForecast() {
     string weatherJson;
     vector<string> jsonVector;
     stringstream result;
-
     weatherJson = getWeatherData(0);
     jsonVector = parseWeatherData(weatherJson);
-
-    result << "The current temperature is " << jsonVector[0] << "." << endl;
-    result << "The max temp is " << jsonVector[1] << "." << " The min temp is " << jsonVector[2] << "." << endl;
+    result << "The current temperature is " << jsonVector[0] << "°C." << endl;
+    result << "The max temp is " << jsonVector[1] << "°C." << " The min temp is " << jsonVector[2] << "°C." << endl;
     result << "The sky is currently " << jsonVector[3] <<  "." << endl;
     return result.str();
 }
