@@ -1,7 +1,8 @@
 #include "JsonParser.h"
 
 using namespace std;
-vector<string> JsonParser::parseJSON(std::string result){
+
+vector<string> JsonParser::parseJSON(string result){
 	vector<string> command;
 	Json::Reader reader;
 	Json::Value obj;
@@ -12,4 +13,8 @@ vector<string> JsonParser::parseJSON(std::string result){
 	// won't always be "on_off"
 	command.push_back(intent);
 	return command;
+}
+
+vector<string> JsonParser::parseWeatherData(string weatherJson) {
+
 }
