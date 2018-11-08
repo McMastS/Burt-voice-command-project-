@@ -21,16 +21,14 @@ int main(){
     cout << "Intent:" << vec2[1] << endl;
 
     // Weather tests
+    cout << "Weather test: " << endl;
     string weatherTest2 = VoiceToText::parseSpeech("./test/Weather.wav");
-    cout << weatherTest2 << endl;
     vector<string> weather = JsonParser::parseJSON(weatherTest2);
-    cout << weather[0] << endl;
     CommandParser::runCommand(weather);
 
-    // Timer tests
-    string timerTest = VoiceToText::parseSpeech("./test/StartTimer1.wav");
-    cout << timerTest << endl;
-    vector<string> timer = JsonParser::parseJSON(timerTest);
-    cout << timer[0] << endl;
-    CommandParser::runCommand(timer);
+    // Timer tests : timer doesn't handle units yet
+    // cout << "Timer test: " << endl;
+    // string timerTest = VoiceToText::parseSpeech("./test/StartTimer1.wav");
+    // vector<string> timer = JsonParser::parseJSON(timerTest);
+    // CommandParser::runCommand(timer);
 } 

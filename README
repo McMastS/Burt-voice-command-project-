@@ -1,5 +1,25 @@
-To compile and test run g++ ./test/test.cpp -lcurl -ljsoncpp -lwiringPi
+Hello and welcome to BURT! BURT is our "smart" speaker that is currently under development.
+BURT uses wit.ai to parse speech files and run commands.
+
+BURT is developed by:
+Samer Alabi: 250 893 713
+Phu (Matt) Pham: 250 894 644
+Aadam Ali: 250 911 006
+Ryan Kennedy: 250 872 422
+Spencer McMaster: 250 886 433
+
+What we have completed so far is a bare bones skeleton, but BURT will eventually use a GUI
+to interact with the classes we have run and be able to record audio and send to wit.ai on
+the fly.
+
 
 Make sure to have libcurl-dev and libjsoncpp-dev installed
+To compile and run tests use (from main project folder):
+g++ ./test/test.cpp -lcurl -ljsoncpp -lwiringPi
+./a.out
 
-If you make your own .wav files to test, make sure they are recorded using mono, not stereo
+Refer to the Expected Output.txt file for a sample output.
+
+If you make your own .wav files to test, make sure they are recorded using mono, not stereo.
+If you would like a demo of the lights, let us know.
+

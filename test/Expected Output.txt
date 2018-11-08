@@ -13,5 +13,70 @@ Intent:on
 Subect:light
 Intent:off
 
+*not done yet* 
 Start Timer Test:
 prints out "Time up" after 3 seconds
+
+
+Sample output:
+VoiceToText Test:
+{
+  "_text" : "turn on the lights",
+  "entities" : {
+    "message_subject" : [ {
+      "suggested" : true,
+      "confidence" : 0.9381,
+      "value" : "lights",
+      "type" : "value"
+    } ],
+    "on_off" : [ {
+      "confidence" : 0.99055656224534,
+      "value" : "on"
+    } ]
+  },
+  "msg_id" : "1HORDkFBU1i8EiZKm"
+}
+{
+  "_text" : "turn off the lights",
+  "entities" : {
+    "message_subject" : [ {
+      "suggested" : true,
+      "confidence" : 0.93808,
+      "value" : "lights",
+      "type" : "value"
+    } ],
+    "on_off" : [ {
+      "confidence" : 0.99034953638089,
+      "value" : "off"
+    } ]
+  },
+  "msg_id" : "1yWrcmyTlLXquBWEn"
+}
+Json Parsing Test:
+Subject:lights
+Intent:on
+Subject:lights
+Intent:off
+{
+  "_text" : "what's the weather",
+  "entities" : {
+    "message_subject" : [ {
+      "suggested" : true,
+      "confidence" : 0.93803,
+      "value" : "weather",
+      "type" : "value"
+    } ],
+    "on_off" : [ {
+      "confidence" : 0.93183967928767,
+      "value" : "on"
+    } ]
+  },
+  "msg_id" : "1PeDJ9wWHufnvqDsy"
+}
+Weather test:
+The current temperature is 5°C.
+The max temp is 4°C. The min temp is 6°C.
+The sky is currently Clouds.
+
+
+
