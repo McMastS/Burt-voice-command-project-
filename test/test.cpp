@@ -20,7 +20,6 @@ int main(){
     cout << "Subject:" << vec2[0] << endl;
     cout << "Intent:" << vec2[1] << endl;
 
-    //Audio
     string weatherTest2 = VoiceToText::parseSpeech("./test/Weather.wav");
     cout << weatherTest2 << endl;
     vector<string> weather = JsonParser::parseJSON(weatherTest2);
