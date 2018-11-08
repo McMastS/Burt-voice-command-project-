@@ -24,7 +24,13 @@ int main(){
 	// CommandParser::runCommand(vec1);
 	// CommandParser::runCommand(vec2);
 
+    // No audio
     cout << "Weather test: " << endl;
-    string weatherTest = Weather::currentForecast();
-    cout << weatherTest << endl;
+    string weatherTest1 = Weather::currentForecast();
+    cout << weatherTest1 << endl;
+
+    //Audio
+    string weatherTest2 = VoiceToText::parseSpeech("./test/Weather.wav");
+    cout << weatherTest2 << endl;
+
 } 
