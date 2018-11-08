@@ -2,15 +2,17 @@
 
 using namespace std;
 
-vector<string> JsonParser::parseJSON(string result){
+vector<string> JsonParser::parseJSON(string rawJson){
 	vector<string> command;
 	Json::Reader reader;
 	Json::Value obj;
-	reader.parse(result, obj);
+	reader.parse(rawJson, obj);
+
 	string subject = obj["entities"]["message_subject"][0]["value"].asString();
 	string intent = obj["entities"]["on_off"][0]["value"].asString();
+
+	// subject at position 0, intent at 1
 	command.push_back(subject);
-	// won't always be "on_off"
 	command.push_back(intent);
 	if (obj["entities"]["duration"] != "null"){
 		string duration = obj["entities"]["duration"][0]["normalized"]["value"].asString(); 

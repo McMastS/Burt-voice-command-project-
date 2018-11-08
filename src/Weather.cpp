@@ -34,10 +34,10 @@ static size_t WriteMemoryCallback(void *contents, size_t size, size_t nmemb, voi
     return realsize;
 }
 
-void Weather::getWeatherData(short type) {
+string Weather::getWeatherData(short type) {
     CURL *curl_handle;
     CURLcode res;
-    
+    string json = "";
     struct MemoryStruct chunk;
     
     chunk.memory = (char *) malloc(1);  /* will be grown as needed by the realloc above */ 
@@ -49,11 +49,11 @@ void Weather::getWeatherData(short type) {
     curl_handle = curl_easy_init();
     // current forecast
     if (type == 0) {
-        curl_easy_setopt(curl_handle, CURLOPT_URL, "https://api.openweathermap.org/data/2.5/weather?q=London,can&APPID=2efa2cf5aec88126598b2a34c11931bb");
+        curl_easy_setopt(curl_handle, CURLOPT_URL, "https://api.openweathermap.org/data/2.5/weather?q=Toronto,can&APPID=2efa2cf5aec88126598b2a34c11931bb");
     }
     // five day forecast
     if (type == 1) {
-        curl_easy_setopt(curl_handle, CURLOPT_URL, "https://api.openweathermap.org/data/2.5/forecast?q=London,can&APPID=2efa2cf5aec88126598b2a34c11931bb");
+        curl_easy_setopt(curl_handle, CURLOPT_URL, "https://api.openweathermap.org/data/2.5/forecast?q=Toronto,can&APPID=2efa2cf5aec88126598b2a34c11931bb");
     }
     curl_easy_setopt(curl_handle, CURLOPT_WRITEFUNCTION, WriteMemoryCallback);
     curl_easy_setopt(curl_handle, CURLOPT_WRITEDATA, (void *)&chunk);
@@ -64,11 +64,51 @@ void Weather::getWeatherData(short type) {
                 curl_easy_strerror(res));
     }
     else {
-        std::string cpp_string = chunk.memory;
-        cout << cpp_string << endl;
+        json = chunk.memory;
     }
     curl_easy_cleanup(curl_handle);
     free(chunk.memory);
      
     curl_global_cleanup();
+    return json;
+}
+
+/**
+ * Parses json returned from weather api and returns a vector of the form:
+ * ['current temp', 'min temp', 'max temp', 'sky conditions']
+ * 
+ * Will need to add option for 5 day forecast if we add it, as this is just current.
+ **/
+vector<string> Weather::parseWeatherData(std::string weatherJson) {
+    vector<string> jsonVector;
+    Json::Reader reader;
+    Json::Value obj;
+    reader.parse(weatherJson, obj);
+
+    // Temperature is stored as Kelvin in JSON, so convert to celsius
+    double temp = obj["main"]["temp"].asDouble() - 273.15;
+    double min_temp = obj["main"]["temp_min"].asDouble() - 273.15;
+    double max_temp = obj["main"]["temp_max"].asDouble() - 273.15;
+    string skyCondition = obj["weather"][0]["main"].asString();
+
+    jsonVector.push_back(to_string(temp));
+    jsonVector.push_back(to_string(min_temp));
+    jsonVector.push_back(to_string(max_temp));
+    jsonVector.push_back(skyCondition);
+
+    return jsonVector;
+}
+
+string Weather::currentForecast() {
+    string weatherJson;
+    vector<string> jsonVector;
+    stringstream result;
+
+    weatherJson = getWeatherData(0);
+    jsonVector = parseWeatherData(weatherJson);
+
+    result << "The current temperature is " << jsonVector[0] << "." << endl;
+    result << "The max temp is " << jsonVector[1] << "." << " The min temp is " << jsonVector[2] << "." << endl;
+    result << "The sky is currently " << jsonVector[3] <<  "." << endl;
+    return result.str();
 }

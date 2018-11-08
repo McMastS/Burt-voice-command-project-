@@ -1,2 +1,4 @@
 To compile and test run g++ ./test/test.cpp -lcurl -ljsoncpp
 Make sure to have libcurl-dev and libjsoncpp-dev installed
+
+If you make your own .wav files to test, make sure they are recorded using mono, not stereo

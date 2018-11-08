@@ -1,10 +1,7 @@
 #include "../src/VoiceToText.cpp"
 #include "../src/JsonParser.cpp"
-<<<<<<< HEAD
 #include "../src/Weather.cpp"
-=======
-#include "../src/CommandParser.cpp"
->>>>>>> 80ea5d77bbccdf5a39aa17f42e7b01916e1bb431
+// #include "../src/CommandParser.cpp"
 
 using namespace std;
 class test{
@@ -24,9 +21,10 @@ int main(){
     cout << "Subject:" << vec2[0] << endl;
     cout << "Intent:" << vec2[1] << endl;
 	
-	CommandParser::runCommand(vec1);
-	CommandParser::runCommand(vec2);
+	// CommandParser::runCommand(vec1);
+	// CommandParser::runCommand(vec2);
 
     cout << "Weather test: " << endl;
-    Weather::getWeatherData(0);
+    string weatherTest = Weather::currentForecast();
+    cout << weatherTest << endl;
 } 
