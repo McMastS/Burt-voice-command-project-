@@ -3,14 +3,12 @@
 #include <wiringPi.h>
 #include "LedOn.h"
 
-int LedOn::run(std::string led) {
+int LedOn::run() {
 	if (wiringPiSetup() == -1)
 		return -1;
 	
 	pinMode(0, OUTPUT);
-	
-	if (led.compare("LED one") == 0)
-		digitalWrite(0, 1);
+	digitalWrite(0, 1);
 	
 	return 0;
 }

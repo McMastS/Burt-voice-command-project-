@@ -5,7 +5,7 @@
 
 class LedOff {
 	public:
-		static int run(std::string led);
+		static int run();
 	private:
 		LedOff() = delete;
 };
